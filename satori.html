@@ -1,0 +1,1233 @@
+
+<!-- saved from url=(0017)http://satori.sk/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <title>Satori SK</title>
+  
+  	<meta property="title" content="Satori SK | Code-art studio">
+	<meta property="og:title" content="Satori SK | Code-art">
+	<meta property="og:type" content="website">
+	<meta property="og:image" content="websocial.png">
+	<meta property="og:description" content="Home of Satori SK | online / mobile/ embedded visual systems studio">
+	<meta property="og:url" content="http://satori.sk">
+	<link rel="image_src" href="http://satori.sk/websocial.png">
+
+  <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+	  
+	  
+#blankbox {
+	z-index: 1000;
+	filter: alpha(opacity=50);
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+	-moz-opacity: 0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+	background-color:#000000;
+	position:fixed; top:0px; left:0px; width:100%; height:100%; color:#808080; text-align:center; vertical-align:middle;
+        visibility: hidden;
+}
+
+#displaybox {
+	z-index: 10000;
+	filter: alpha(opacity=100);
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+	-moz-opacity: 1.0;
+	-khtml-opacity: 1.0;
+	opacity: 1.0;
+	background-color:#000000;
+	position:fixed; top:0px; left:0px; width:520; height:384; color:#808080; text-align:center; vertical-align:middle;
+        visibility: hidden;
+}
+
+td.name_ovr {
+	color: #FFFFFF;
+	font-family: "Courier";
+	font-size: 14pt;
+	font-weight: bold;
+	white-space: nowrap;
+}
+
+td.date_ovr {
+	color: #C0C0C0;
+	font-family: "Courier";
+	font-size: 9pt;
+	text-align: right;
+	white-space: nowrap;
+}
+
+.btn{
+   border: 1px solid #000000;
+   background-color: #f0f0f0;
+   padding: 5px 5px;
+   color: #000000;
+   font-family: "Courier";
+   font-size: 15pt;
+   border-radius:7px;
+   width:100;
+    
+    -o-transition: background-color .2s ease-in; 
+	-moz-transition: background-color .2s ease-in;
+	-webkit-transition: background-color .2s ease-in; 
+	transition: background-color .2s ease-in; 
+}
+
+.btn:hover {
+    background-color: #ffa000;    
+}
+
+.btn:active {
+    background-color: #ff8000;
+}
+
+input {
+	color: black;
+	font-family: "Courier";
+	font-size: 10pt;
+	font-weight: normal;
+    text-decoration: none;
+}
+
+textarea {
+	resize: none;
+	color: black;
+	font-family: "Courier";
+	font-size: 10pt;
+	font-weight: normal;
+    text-decoration: none;
+}
+
+table.wait_indi
+{
+	background-image: url('wait.gif'); background-position: center;background-repeat:no-repeat;
+}
+
+    </style>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+	<div id="LoadDiv" style="display: block; position:block; width:100%; height: 100%; z-index:2; left: 0; top: 0; visibility: visible;">
+		<canvas id="loader" width="958" height="878" style="cursor: default;"></canvas>
+	</div>
+<div id="displaybox" style="display: none;"></div>
+<div id="blankbox" style="display: none; width:100%; height: 100%;"><a href="http://satori.sk/#" onclick="return overlay_close();"><table width="100%" height="100%"><tbody><tr><td background="./Satori SK_files/overlay.gif"><img src="./Satori SK_files/space.gif" width="100%" height="100%"></td></tr></tbody></table></a></div>
+
+		<script async="" src="./Satori SK_files/analytics.js.download"></script><script type="text/javascript" src="./Satori SK_files/gfxutil.js.download"></script>
+		<script type="text/javascript" src="./Satori SK_files/tools.js.download"></script>
+		<script type="text/javascript" src="./Satori SK_files/htmltools.js.download"></script>
+		<script type="text/javascript">
+
+	var addEvent = function(elem, type, eventHandle) {
+		if (elem == null || elem == undefined) return;
+		if ( elem.addEventListener ) {
+			elem.addEventListener( type, eventHandle, false );
+		} else if ( elem.attachEvent ) {
+			elem.attachEvent( "on" + type, eventHandle );
+		} else {
+			elem["on"+type]=eventHandle;
+		}
+	};
+
+	function window_reallign()
+	{
+		win_wid = window.innerWidth;
+		win_hei = window.innerHeight;
+
+		canvas.width = win_wid;
+		canvas.height = win_hei;
+
+		scale = 16/9;
+		
+      var style =
+        "-webkit-transform:" + scale + ";" +
+        "-moz-transform:" + scale + ";" +
+        "-ms-transform:" + scale + ";" +
+        "-o-transform:" + scale + ";" +
+        "transform:" + scale;
+	
+		
+
+        canvas.setAttribute("style", style);
+
+		if (overlay_open)
+			overlay_reallign();
+//		canvas.style.width = win_wid+"px";
+//		canvas.style.height = win_hei+"px";
+		//canvas.setAttribute('style', style + ' ' + '-ms-transform-origin: center top; -webkit-transform-origin: center top; -moz-transform-origin: center top; -o-transform-origin: center top; transform-origin: center top; -ms-transform: scale(' + scale + '); -webkit-transform: scale3d(' + scale + ', 1); -moz-transform: scale(' + scale + '); -o-transform: scale(' + scale + '); transform: scale(' + scale + ');');
+	}
+
+	var satori_logo1 = [ 4, 4, 19.5, 0, 48.5, 9.7, 67.9, 67.8, 9.8, 48.5 ];
+	var satori_logo1_ = [ 4, 4, 0, 19.5,  9.8, 48.5, 67.9, 67.8, 48.5, 9.7 ];
+	var satori_logo2 = [ 4, 8, 19.5, 0, 48.5, 9.7, 52.5, 21.6, 41.3, 27.2 ];
+	var PI = 3.1415926;
+	function satori_paint()
+	{
+		function satori_subpart(data, start_ang, col, col_f, scale, sub_part, ang_dir, fill_alfa)
+		{
+			var an, a, c, ang, ang_pos = start_ang, rep, p = 0;
+			var dx, dy, x, y, xx, yy;
+			var steps = 0;
+			var steps_max = sub_part >> 8;
+			var trans = sub_part % 256;
+			if (!sub_part) steps_max = 999;
+
+			context.lineWidth = 5*scale;
+			context.strokeStyle = col.str;
+			context.globalAlpha = 1;
+			context.lineCap = "round";
+			
+			c = data[p++];
+			rep = data[p++];
+			ang = 2*PI/rep;
+
+			context.beginPath();
+			//x = data[p++]+(win_wid>>1);
+//			y = data[p++]+(win_hei>>1);
+			dx = data[p++]; dy = data[p++];
+			x = (dx*Math.cos(ang_pos) - dy*Math.sin(ang_pos))*scale + (win_wid>>1);
+			y = (dy*Math.cos(ang_pos) + dx*Math.sin(ang_pos))*scale + (win_hei>>1);
+			context.moveTo(x, y);
+			for (an = 0; an < rep; an++, ang_pos += ang*ang_dir)
+			{
+				if (!an) a = 1; else a = 0;
+				for (; a < c; a++)
+				{
+					dx = data[p++]; dy = data[p++];
+					xx = (dx*Math.cos(ang_pos) - dy*Math.sin(ang_pos))*scale + (win_wid>>1);
+					yy = (dy*Math.cos(ang_pos) + dx*Math.sin(ang_pos))*scale + (win_hei>>1);
+					if (steps == steps_max)
+					{
+						xx = x + ((xx - x)*trans)/255;
+						yy = y + ((yy - y)*trans)/255;
+					}
+					context.lineTo(xx, yy); //(context, x, y, xx, yy, col_white, 1, 5);
+					x = xx; y = yy;
+					if (steps == steps_max) { a = c; an = rep; }
+					steps++;
+				}
+				p = 2;
+			}
+//			xx = data[p++]+(win_wid>>1);
+	//		yy = data[p++]+(win_hei>>1);
+			if (!sub_part || steps <= steps_max)
+			{
+				dx = data[p++]; dy = data[p++];
+				xx = (dx*Math.cos(ang_pos) - dy*Math.sin(ang_pos))*scale + (win_wid>>1);
+				yy = (dy*Math.cos(ang_pos) + dx*Math.sin(ang_pos))*scale + (win_hei>>1);
+				if (steps == steps_max)
+				{
+					xx = x + ((xx - x)*trans)/255;
+					yy = y + ((yy - y)*trans)/255;
+				}
+				context.lineTo(xx, yy); //line(context, x, y, xx, yy, col_white, 1, 5);
+			}
+			context.stroke();
+			if (!sub_part)
+			{
+				context.globalAlpha = fill_alfa;
+				context.fillStyle = col_f.str;
+				context.fill();
+			}
+			
+		}
+		
+		var col_satori1 = new RGB( 255, 153, 0 );
+		var col_satori2 = new RGB( 255, 190, 0 );
+		
+		var scale = 0;//0+time/1000;
+		var rot_add = 0;//time/1000;
+		var prog;
+		var fill_alfa;
+		scale += time/1000;
+		if (scale > 2) scale = 2;
+		if (time > 2000)
+		{
+			if (time > 6000)
+			{
+				if (time < 9500)
+					fill_alfa = (time - 6000)/3000;
+				else
+					fill_alfa = 1;
+				satori_subpart(satori_logo1, 0+rot_add, col_satori2, col_satori1, scale, 0, 1, fill_alfa);
+				satori_subpart(satori_logo1, PI/2 + 2*PI/8+rot_add, col_satori2, col_satori2, scale, 0, 1, fill_alfa);
+				satori_subpart(satori_logo2, 0+rot_add/2, col_satori2, col_black, scale, 0, 1, fill_alfa);
+			}
+			else
+			{
+				prog = 1+Math.floor(time - 2000);
+				satori_subpart(satori_logo1, 0+rot_add, col_satori2, col_satori1, scale, prog, 1, fill_alfa);
+				satori_subpart(satori_logo1, PI/2 + 2*PI/8+rot_add, col_satori2, col_satori2, scale, prog, 1, fill_alfa);
+				satori_subpart(satori_logo2, 0+rot_add, col_satori2, col_black, scale, prog, 1, fill_alfa);
+			}
+		}
+		context.globalAlpha = 1;
+		var cs = 5;
+		if (time > 6000)
+		{
+			if (time < 9500)
+				cs = 5 - ((time - 6000)*2)/3000;
+			else
+				cs = 3;
+		}
+		circle_fill_canvas(context, (win_wid>>1), (win_hei>>1), 28.3*scale, col_satori2, col_white, cs*scale, 1);
+	}
+
+	var mouse = { x: 0, y: 0, x_prev: 0, y_prev: 0, wheel_delta: 0, down: 0, click: 0, click_release: 0, touch: 0, touch_wheel:0, touch_x:0, touch_y:0, touch_delta:0, touch_click_x: 0, touch_click_y:0 };
+	var scroll_pos = 0, scroll_max;
+	/*
+	var mouse_wheel_delta = 0;
+	var mouse_x = 0, mouse_y = 0;
+	var mouse_down = 0;
+	var mouse_click = 0, mouse_click_release = 0;*/
+	
+	addEvent(window, "resize", window_reallign);
+
+	function mouse_wheel(event)
+	{
+		if (!overlay_open)
+		{
+		
+        var delta = 0;
+        if (!event) /* For IE. */
+                event = window.event;
+        if (event.wheelDelta) { /* IE/Opera. */
+                delta = event.wheelDelta/120;
+        } else if (event.detail) { /** Mozilla case. */
+                /** In Mozilla, sign of delta is different than in IE.
+                 * Also, delta is multiple of 3.
+                 */
+                delta = -event.detail/2;
+        }
+        if (delta)
+		{
+        	mouse.wheel_delta += delta*4;
+			if (mouse.wheel_delta > 20) mouse.wheel_delta = 20;
+			if (mouse.wheel_delta < -20) mouse.wheel_delta = -20;
+		}
+			//pic_y += delta;
+			//alert(delta);
+                //handle(delta);
+	//	mouse_delta =  delta;
+	//	event.returnValue = false;
+	}
+		event.preventDefault();
+	}
+	
+	function touch_move(event)
+	{
+		if (!mouse.down) { event.preventDefault(); return; }
+		var mx, my;
+		
+		mx = event.touches[0].clientX;
+		my = event.touches[0].clientY;
+
+		if (mouse.touch_wheel)
+		{
+			mouse.touch_delta = 1 * (mouse.touch_y - my) / 2;
+			/*
+			if (my > mouse.touch_y)
+				mouse.wheel_delta += -1;
+			else
+				mouse.wheel_delta += 1;*/
+				/*
+			mouse.wheel_delta = (mouse.touch_y - mx) / 10;
+			mouse.touch_x = mx;
+			mouse.touch_y = my;*/
+		}
+		else
+		{
+			mouse.x_prev = mouse.x;
+			mouse.y_prev = mouse.y;
+			mouse.x = mx;
+			mouse.y = my;
+			if (mouse.x != mouse.x_prev || mouse.y != mouse.y_prev)
+				mouse.last_move_time = time;
+		}
+
+		event.preventDefault();
+	}
+	
+	function mouse_move(event)
+	{
+		if (overlay_open) return;
+		if (mouse.touch) { event.preventDefault(); return; }
+		mouse.x_prev = mouse.x;
+		mouse.y_prev = mouse.y;
+		mouse.x = event.clientX;
+		mouse.y = event.clientY;
+		if (mouse.x != mouse.x_prev || mouse.y != mouse.y_prev)
+			mouse.last_move_time = time;
+
+		c = links.length;
+		for (a = 0; a < c; a++)
+		{
+			l = links[a];
+			if (mouse.x >= l.x && mouse.y >= l.y && mouse.x < l.x + l.w && mouse.y < l.y + l.h)
+			{
+				canvas.style.cursor = "pointer";
+				break;
+			}
+		}
+		if (a == c)
+			canvas.style.cursor = "default";
+	}
+	
+	function touch_down(event)
+	{
+		if (overlay_open) return;
+		mouse.down = 1;
+		mouse.click = 1;
+		mouse.touch = 1;
+
+		var mx  = event.touches[0].clientX;
+		var my = event.touches[0].clientY;
+
+		if (mx >= win_wid - 16 - 160)
+		{
+			mouse.touch_wheel = 1;
+			mouse.touch_x = mx;
+			mouse.touch_y = my;
+		}
+		else
+		{
+			mouse.x = mx;
+			mouse.y = my;
+		}
+		mouse.touch_click_x = mx;
+		mouse.touch_click_y = my;
+
+		event.preventDefault();
+	}
+	
+	function mouse_down(event)
+	{
+		if (overlay_open) return;
+		mouse.down = 1;
+		mouse.click = 1;
+
+		event.preventDefault();
+	}
+
+	function touch_up(event)
+	{
+		scroll_pos += mouse.touch_delta;
+//		if (mouse.touch_delta != 0)
+//			mouse.wheel_delta = -1 * mouse.touch_delta / 10;
+		mouse.touch = mouse.touch_wheel = mouse.touch_delta = 0;
+
+		if (mouse.down)
+		{
+			mouse.down = 0;
+			mouse.click_release = 1;
+		}
+
+		event.preventDefault();
+	}
+	
+	function mouse_up(event)
+	{
+		if (mouse.down)
+		{
+			mouse.down = 0;
+			mouse.click_release = 1;
+		}
+
+		event.preventDefault();
+	}
+
+		if (screen.width < 512)
+		{
+			viewport = document.querySelector("meta[name=viewport]");
+			viewport.setAttribute('content', 'width=device-width, initial-scale=0.5');
+		}
+		var canvas = document.getElementById('loader');
+		var context = canvas.getContext('2d');
+		
+		var win_wid = window.innerWidth;
+		var win_hei = window.innerHeight;
+
+		//canvas.style.left = (window.innerWidth/2-32)+"px";
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		canvas.style.width = window.innerWidth+"px";
+		canvas.style.height = window.innerHeight+"px";
+		canvas.style.visibility = "visible";
+
+		var pic_y = 0;
+		
+		var pic_pos = { x: 0, y:0, shift_x:0, shift_y:0, drag_x: 0, drag_y: 0, dir_x:0, dir_y:0 };
+		/*
+		var pic_pos_x = 0;
+		var pic_pos_y = 0;
+		var mouse_shift_x, mouse_shift_y;
+		var pic_drag_x = 0.0;
+		var pic_drag_y = 0.0;*/
+		
+		var start_time = (new Date()).getTime();
+		var time = 0;
+
+var data_fader_map = [
+	45,16,15,17,31,29,18,15,15,30,35,17,15,16,27,30,19,15,15,25,33,20,15,18,21,29,22,16,15,21,29,23,16,19,16,25,27,19,15,32,22,0,0,14,25,15,1,0,10,30,17,0,0,9,24,18,3,0,7,24,20,2,2,5,17,20,8,0,4,16,21,8,3,2,9,22,15,1,1,20,23,0,6,28,31,16,0,3,26,38,12,0,4,21,30,20,2,2,19,33,18,2,4,13,27,24,8,0,12,26,24,10,5,4,21,30,16,0,5,32,34,2,7,32,41,27,4,3,27,47,26,4,6,25,40,30,9,2,21,41,31,9,7,16,33,34,18,3,15,32,34,18,9,9,25,38,27,7,7,38,58,14,6,25,50,45,21,5,19,49,52,18,7,20,45,46,27,7,16,43,50,25,10,17,35,45,34,14,11,34,46,34,17,15,23,42,42,22,9,37,71,25,11,27,57,55,33,11,22,54,65,29,11,24,51,57,38,15,18,48,61,37,16,23,40,55,44,23,15,39,54,45,24,22,28,48,52,33,15,40,65,23,21,50,69,58,29,18,43,74,61,26,21,42,66,60,35,18,37,65,64,34,25,35,56,62,45,23,30,55,63,46,30,29,43,64,56,31,23,56,56,25,39,71,77,56,26,34,68,85,51,28,36,63,75,62,32,31,60,79,59,35,37,51,71,67,44,29,50,69,68,47,38,38,63,75,57,30,38,71,70,33,44,78,88,68,36,38,73,96,65,37,42,70,86,73,44,36,66,89,73,45,43,58,80,79,56,36,55,78,79,58,46,46,69,85,69,40,43,78,101,51,41,70,99,91,60,39,63,101,98,56,43,63,94,94,68,42,57,92,98,66,48,58,82,94,78,51,50,81,94,79,56,54,67,91,89,62,46,78,119,68,48,70,107,106,79,48,63,103,117,74,50,66,100,107,85,55,58,96,112,84,56,65,87,104,92,66,55,85,104,94,68,64,72,96,102,79,55,81,115,66,61,95,121,110,75,58,87,124,115,72,62,87,117,113,85,59,80,115,116,82,68,79,104,114,96,68,72,103,115,96,75,74,89,114,107,79,65,100,103,69,84,122,129,107,70,78,117,138,102,73,82,113,128,113,79,75,109,131,111,82,83,99,122,119,93,74,97,121,120,96,84,85,112,127,108,75,84,118,114,79,94,132,140,118,80,87,127,148,113,83,91,123,139,124,89,84,119,141,123,92,93,109,132,130,104,83,107,131,131,107,94,95,122,138,119,86,93,128,146,98,90,125,153,143,107,87,117,155,148,102,92,117,148,145,117,90,110,146,150,113,98,110,136,146,128,99,102,134,146,128,106,104,119,145,141,110,94,128,167,119,97,121,160,158,131,98,113,156,170,126,99,116,152,160,138,105,108,149,165,136,106,116,139,157,145,118,105,137,157,146,119,115,124,149,155,132,105,129,168,120,111,144,173,164,131,107,136,175,171,125,112,136,168,167,140,111,129,166,171,136,118,130,155,167,150,121,121,154,167,151,127,125,139,165,162,133,115,147,155,121,134,173,182,162,123,128,168,190,157,126,132,164,180,167,133,125,160,183,166,136,134,150,174,172,148,125,148,172,173,150,136,137,163,179,162,129,134,167,162,131,148,185,190,169,132,141,181,199,163,136,144,177,189,175,141,138,173,192,172,145,146,163,184,181,155,135,161,183,182,158,147,148,176,189,170,138,147,177,190,148,145,180,203,191,156,140,172,206,194,153,146,172,199,194,166,142,166,198,197,164,152,164,189,196,178,150,157,188,196,178,158,157,174,197,189,160,148,180,213,171,150,174,209,207,181,150,167,206,216,176,152,170,203,208,188,157,161,199,213,186,159,168,190,206,195,170,158,188,206,197,171,168,176,199,204,182,157,179,215,175,162,191,219,213,185,160,184,219,220,180,164,185,214,215,192,164,178,212,219,190,170,181,203,215,201,175,172,202,215,202,180,177,189,212,211,187,168,193,205,174,183,217,227,212,177,178,213,233,209,178,182,210,226,216,187,176,206,227,215,187,185,199,219,220,199,177,196,218,220,200,188,188,209,225,211,182,184,212,207,183,199,229,233,215,183,193,227,239,210,187,196,222,232,220,191,189,219,234,217,195,196,211,228,226,204,188,210,227,225,207,197,198,222,231,216,188,198,221,229,197,197,227,242,232,203,193,222,245,233,201,198,221,239,234,211,193,216,239,236,210,202,213,232,236,221,198,208,232,237,222,207,206,221,238,231,206,199,224,247,216,200,221,246,244,225,200,215,244,250,221,202,217,242,245,230,205,210,239,248,228,208,216,233,244,235,216,207,231,244,237,217,215,222,240,242,226,207,222,249,222,210,231,252,249,230,209,226,250,253,226,211,227,248,250,235,213,221,247,253,234,216,225,241,250,241,222,217,239,250,242,225,223,231,247,248,232,215,231,243,221,226,249,255,248,224,222,245,255,246,224,225,244,255,251,231,221,242,255,250,232,228,238,251,252,240,223,235,251,253,241,231,231,244,255,248,228,226,246,243,227,239,255,255,249,227,235,254,255,245,231,237,253,254,251,233,233,252,255,249,237,237,247,254,253,242,231,247,254,252,244,238,239,251,255,249,232,238,251,251,238,240,254,255,254,240,237,252,255,252,241,240,253,254,254,246,237,251,255,253,245,243,249,254,253,251,239,247,255,253,251,246,245,251,254,254,244,241,253,
+	104,122,128,127,127,127,128,128,128,128,128,129,127,123,116,113,116,127,139,148,152,156,158,161,164,167,170,173,177,182,187,191,192,192,194,199,208,217,219,215,103,121,128,127,127,127,127,127,124,122,121,121,119,115,108,104,106,114,126,136,141,143,145,147,150,153,156,159,160,161,164,170,175,178,181,186,195,207,212,208,100,120,128,127,127,127,127,127,123,119,119,118,115,110,103,100,102,109,120,128,135,138,140,141,144,146,149,151,150,147,147,154,163,169,173,177,186,200,208,203,98,118,128,127,127,127,127,126,121,117,118,117,112,107,100,97,99,105,116,125,132,137,139,141,143,145,148,149,146,141,141,148,159,167,171,175,185,201,210,204,95,117,127,127,127,127,127,126,120,116,116,114,111,105,99,95,96,103,113,123,131,137,139,141,143,145,148,149,144,138,137,145,159,167,171,176,188,209,218,209,93,115,127,127,127,127,127,125,118,114,113,112,108,103,96,93,94,100,112,123,131,137,140,142,144,147,149,149,144,135,133,145,159,168,173,180,196,220,227,216,91,114,127,127,127,127,127,123,115,111,110,110,107,101,94,89,90,98,110,123,131,137,142,145,147,150,152,151,147,139,140,153,167,175,180,190,209,231,235,224,88,111,127,127,127,127,127,122,113,110,110,110,107,99,91,85,86,95,109,123,134,142,148,151,154,157,160,161,161,165,176,187,190,191,195,205,223,238,240,232,86,111,127,127,127,128,128,123,114,110,110,110,107,97,86,78,77,88,111,133,146,155,160,165,168,171,174,179,191,208,223,223,216,211,212,220,232,241,241,236,83,110,128,132,133,135,136,129,119,114,114,114,107,87,67,56,51,75,136,166,173,178,181,183,185,188,193,202,216,231,238,235,229,224,224,229,236,242,243,238,78,112,137,142,144,146,147,141,132,128,132,140,133,79,33,22,26,106,199,208,202,201,201,201,201,203,208,217,228,236,240,238,234,230,230,233,238,242,243,239,70,114,146,153,156,159,161,160,161,170,182,197,208,151,42,3,61,190,238,227,218,214,212,212,212,213,217,224,232,238,241,239,236,232,232,235,240,244,245,241,59,114,155,163,166,169,172,180,197,215,225,232,244,233,108,17,130,242,244,232,225,221,219,218,218,218,222,227,234,239,242,241,237,233,234,236,241,245,246,242,52,111,160,168,171,174,179,191,215,233,238,240,248,240,118,20,139,246,245,234,229,225,222,221,221,221,223,229,235,241,244,243,238,236,235,238,242,247,248,244,50,106,157,167,170,173,178,194,222,239,244,247,243,181,53,2,79,213,248,237,231,226,224,223,222,222,225,230,238,242,245,244,240,237,237,239,244,247,249,245,52,99,149,162,164,167,171,179,178,161,171,184,149,65,8,1,20,128,231,243,233,228,224,223,223,223,227,232,239,244,247,246,242,239,238,240,245,249,250,246,57,94,136,151,154,156,154,139,98,58,53,55,35,15,12,12,8,39,148,227,236,229,224,222,222,222,226,234,244,249,251,251,245,241,240,243,248,253,253,249,64,90,124,138,141,141,133,110,82,64,56,50,41,35,30,27,23,20,50,134,198,214,212,212,213,215,224,235,232,209,198,218,241,246,245,247,246,240,242,249,68,88,115,128,131,128,117,100,86,78,76,72,65,57,49,45,44,43,43,65,111,147,161,170,177,183,193,185,131,73,54,85,147,199,217,203,159,117,125,182,68,86,110,125,127,122,111,96,86,81,80,78,74,68,61,59,59,60,65,74,85,98,110,120,128,133,129,99,53,30,24,24,40,72,88,70,35,16,18,51,67,84,108,124,126,120,108,94,84,78,78,77,74,70,65,65,65,66,72,79,86,92,97,102,106,107,100,83,64,54,47,45,44,44,41,34,27,24,21,18,66,82,107,122,125,119,106,92,82,77,76,75,72,68,65,65,65,66,71,78,85,90,95,98,101,100,95,84,70,60,54,54,55,58,56,48,39,34,30,30,66,81,104,120,123,117,104,89,79,75,75,74,71,67,65,65,65,65,68,75,82,86,91,94,97,95,88,75,63,52,47,47,46,46,42,36,31,27,24,22,65,78,102,119,121,116,101,87,76,72,70,69,66,61,59,58,57,57,58,62,66,69,74,86,102,105,81,50,35,31,27,24,22,24,26,19,13,11,11,13,64,75,101,121,126,119,101,80,66,59,55,53,49,45,42,40,38,36,35,34,36,58,96,141,177,188,159,97,37,12,10,16,48,103,131,107,71,71,86,108,53,65,101,133,143,135,100,58,41,36,33,30,27,24,22,21,19,16,12,18,75,161,210,232,240,243,241,219,156,98,99,128,182,232,246,235,217,219,229,239,41,52,100,147,160,157,96,31,21,19,18,15,14,13,11,9,8,6,2,41,174,251,251,247,243,243,246,252,250,237,239,248,255,255,254,255,255,255,255,255,40,48,95,144,159,152,86,26,19,19,17,15,13,11,10,9,7,6,2,30,144,233,249,250,247,246,249,250,241,241,250,255,255,255,255,255,255,255,255,255,49,56,89,126,138,125,80,43,33,30,27,25,23,20,18,17,15,12,11,11,38,107,167,208,231,237,227,183,117,104,130,155,179,205,223,230,239,246,251,254,59,65,87,112,119,108,82,59,48,44,42,40,37,35,32,30,27,25,23,20,15,17,37,71,110,126,101,49,12,6,12,21,34,58,80,90,111,138,165,189,
+	237,247,248,247,247,247,248,248,248,248,248,245,238,233,236,233,228,221,214,211,204,194,184,172,172,181,181,179,175,168,161,157,154,169,185,189,193,198,194,189,248,255,250,243,241,245,247,245,239,228,215,203,185,177,191,196,187,177,167,167,162,153,146,139,145,165,181,182,175,172,172,176,179,197,218,227,233,237,234,231,239,233,204,183,183,195,205,205,193,175,158,145,128,124,147,161,155,149,144,151,152,150,150,150,162,184,205,208,206,209,213,219,225,237,250,254,255,255,250,243,227,208,169,147,147,163,177,178,165,147,131,119,104,102,129,147,143,140,139,148,152,153,157,160,173,194,214,219,219,224,229,235,241,247,252,253,253,250,244,237,236,219,186,166,163,174,183,181,169,150,132,119,101,96,120,134,128,122,118,126,128,127,129,130,143,165,189,193,192,197,202,209,217,230,242,247,249,248,241,233,245,247,228,213,208,210,213,209,196,178,160,145,125,116,130,137,126,115,106,108,104,97,94,90,99,122,146,147,142,145,148,156,164,183,204,217,224,230,229,227,245,255,250,243,239,238,238,233,222,206,191,176,158,146,151,152,139,126,113,110,101,90,81,71,75,94,115,113,104,103,103,109,116,135,160,174,183,190,190,196,245,254,249,247,246,244,242,237,227,212,197,183,165,153,155,154,140,126,112,107,97,83,74,62,63,80,100,95,85,83,84,88,95,114,140,153,164,170,171,177,245,253,247,242,236,233,231,224,212,197,180,165,147,134,137,135,120,106,92,87,78,66,57,47,50,68,88,87,79,79,82,89,98,117,141,155,166,174,177,185,245,247,234,223,214,210,207,200,186,168,150,135,117,104,106,106,92,79,66,64,57,47,42,36,43,63,85,87,84,89,95,105,115,134,156,170,182,190,195,205,241,234,218,205,195,188,184,177,161,143,125,110,92,79,81,81,68,57,46,45,40,35,34,33,44,63,86,91,92,100,109,120,132,150,170,184,195,205,211,218,231,220,202,190,178,169,165,156,140,121,104,89,73,60,61,61,49,39,30,32,31,29,32,36,48,67,88,96,101,110,121,133,146,163,181,194,206,215,218,218,212,198,180,168,154,144,137,127,112,94,78,63,49,37,38,39,30,23,19,26,29,34,41,50,63,80,100,110,119,130,142,155,168,183,198,210,219,220,217,218,209,197,182,171,156,143,134,124,108,91,75,62,49,38,33,31,22,15,10,16,20,27,36,47,59,75,94,105,114,126,140,153,167,181,195,208,216,218,218,219,233,233,225,217,204,191,180,169,154,139,124,111,98,84,71,62,49,37,26,19,12,8,8,14,20,31,46,55,64,76,89,102,116,130,144,159,172,184,195,206,236,245,245,239,229,216,206,194,180,166,154,141,129,115,99,85,72,59,47,36,26,16,10,10,8,10,21,29,37,49,62,75,89,101,114,128,142,155,169,188,235,243,240,234,222,207,194,182,169,156,144,132,121,108,89,74,62,51,40,29,22,16,15,19,19,18,26,36,48,61,76,89,103,114,125,139,152,166,181,199,232,239,235,229,216,199,184,170,158,145,134,123,114,102,80,64,54,44,37,27,22,21,23,31,32,29,34,46,61,76,90,104,119,128,138,151,164,177,193,210,229,233,230,225,211,191,174,160,148,136,127,117,110,98,74,57,49,41,36,28,25,29,35,44,46,43,46,59,76,91,106,121,135,144,151,163,177,190,206,217,234,240,238,235,222,202,185,171,159,149,140,131,125,113,88,69,61,54,49,40,37,40,44,52,52,45,43,56,73,89,105,119,133,140,145,157,170,184,201,207,231,237,238,235,222,200,182,167,156,148,140,133,128,117,90,71,64,60,57,48,47,51,56,65,65,57,53,67,86,101,118,131,145,151,154,166,178,192,209,212,224,231,235,233,218,194,174,159,148,142,136,130,127,118,89,69,65,63,63,56,56,63,70,81,82,74,70,84,103,119,136,149,163,168,171,181,193,206,222,221,218,228,232,231,216,192,169,154,144,140,136,131,131,123,93,72,71,71,73,66,69,77,85,97,98,90,86,100,120,136,152,166,178,182,185,194,205,218,231,224,209,221,228,228,213,185,162,146,138,136,133,131,134,126,96,76,77,80,84,79,84,94,103,116,118,111,106,121,141,157,172,185,197,201,202,210,221,230,236,228,219,232,240,240,226,201,177,162,155,152,151,149,151,144,113,93,92,95,98,92,96,105,112,124,125,115,108,121,141,158,173,185,197,199,199,207,217,228,239,238,237,252,254,254,248,231,212,198,192,189,186,182,182,175,145,124,122,121,121,112,112,117,121,130,127,112,98,111,130,145,160,171,182,182,178,185,195,209,226,241,239,255,255,255,255,252,239,228,222,220,217,212,212,204,177,157,153,150,148,137,134,136,138,144,137,118,100,109,127,141,153,163,173,169,162,167,176,190,211,231,240,255,255,255,255,251,236,225,220,218,216,214,214,207,181,160,157,156,155,145,144,147,150,157,152,134,117,126,145,158,171,180,190,187,179,184,193,206,225,241,245,255,255,255,254,244,226,214,209,209,209,208,206,199,177,156,155,157,159,151,152,157,163,170,167,153,138,149,168,182,194,203,211,211,206,210,218,229,245,253,230,244,245,245,240,233,216,203,199,199,199,195,189,184,170,154,155,157,159,154,155,160,164,168,172,166,154,161,176,187,195,202,209,214,215,218,227,237,248,247,
+	38,31,35,40,46,51,58,64,71,78,85,92,99,106,114,121,128,135,142,149,156,163,170,178,184,192,199,205,211,217,222,227,232,238,242,246,250,252,251,247,21,16,21,27,32,39,45,52,59,66,74,82,89,95,99,102,106,110,115,122,130,139,150,162,174,186,196,206,213,219,225,231,236,241,246,250,254,255,255,254,24,15,21,25,32,37,45,51,58,65,70,74,74,72,72,72,73,77,82,88,95,105,115,126,141,156,174,191,206,217,224,230,235,240,245,249,253,255,255,254,22,15,20,25,30,37,44,50,55,57,54,51,49,49,52,58,66,76,85,94,101,108,114,119,124,132,145,161,181,201,217,228,235,240,244,249,252,255,255,254,22,14,18,24,30,37,42,45,43,38,36,37,42,52,66,81,96,110,121,131,139,146,151,153,153,151,149,151,160,176,196,216,230,239,244,248,252,255,255,254,23,13,18,24,29,35,36,33,29,29,33,43,59,77,94,107,115,122,127,134,141,151,162,172,180,183,181,176,171,170,179,197,217,233,243,248,252,255,255,253,22,12,18,23,27,28,25,23,25,32,46,64,81,90,90,86,82,80,79,83,88,99,113,133,156,177,193,200,199,192,186,187,201,221,237,246,251,255,255,252,21,12,17,22,22,20,19,22,30,45,64,74,73,64,58,54,54,54,56,59,61,65,71,82,100,127,162,190,207,212,207,199,197,209,227,242,250,254,255,250,21,11,16,18,17,16,19,27,41,58,64,58,51,50,53,56,59,64,71,79,83,85,84,82,81,89,112,149,187,211,219,216,208,207,219,236,248,254,255,251,20,11,14,14,14,17,23,35,49,56,50,48,54,60,62,67,80,97,112,124,132,136,135,128,115,102,97,112,149,191,216,224,222,215,216,230,244,252,255,252,20,10,13,12,15,20,28,41,49,47,47,59,67,65,71,89,107,117,123,128,137,148,159,165,162,148,124,110,122,163,203,223,228,225,221,227,240,251,255,253,18,9,10,13,17,23,32,42,44,46,61,73,69,71,88,101,102,100,100,102,105,114,132,156,174,178,165,139,123,142,185,217,229,231,228,228,238,250,255,253,16,8,10,14,20,25,34,41,42,56,78,79,70,80,92,92,96,106,110,109,105,103,105,126,159,180,185,171,144,138,171,210,228,232,232,231,238,248,255,253,16,7,11,17,22,26,34,39,46,72,90,80,73,83,88,98,119,128,122,119,119,116,109,112,141,173,187,187,166,147,166,205,226,232,235,234,239,248,254,253,17,7,12,20,24,27,33,39,53,85,99,83,74,82,91,116,139,136,124,127,134,135,123,117,137,170,187,192,180,159,170,206,226,232,236,238,241,248,254,252,17,7,13,22,27,27,32,39,58,94,109,90,76,80,94,127,150,145,133,132,140,145,134,127,147,174,185,193,187,169,179,210,226,231,237,239,242,250,254,251,17,7,13,24,29,29,32,38,58,97,120,105,81,79,92,124,154,158,152,147,149,147,140,145,166,179,184,193,190,177,191,217,226,230,238,241,245,251,254,252,16,6,13,25,33,32,32,37,54,93,128,125,97,82,86,108,141,162,165,162,158,155,159,169,176,176,185,196,190,187,206,222,225,230,239,243,248,252,254,252,15,5,12,25,36,37,34,36,47,80,125,143,128,101,89,93,113,138,157,165,168,170,171,169,168,177,194,198,193,202,218,222,222,231,240,244,249,252,253,253,15,5,11,22,37,44,40,37,42,63,104,143,156,141,118,103,101,109,123,135,143,148,151,159,174,191,200,199,204,217,221,217,223,235,243,247,250,250,252,251,14,4,8,18,34,49,50,43,41,49,75,117,155,169,163,149,136,128,128,133,140,151,165,182,197,204,205,210,217,217,212,215,228,239,245,248,249,249,251,252,13,4,8,14,28,46,59,57,48,46,55,80,121,159,179,185,183,179,177,178,183,191,200,206,209,212,215,217,212,205,207,221,235,243,246,247,246,246,251,252,13,3,7,12,20,37,57,69,66,58,54,60,79,111,144,171,187,196,201,204,207,210,212,213,213,211,206,198,194,201,217,232,240,244,244,242,242,246,250,252,12,2,7,11,16,26,44,66,80,80,73,66,65,74,92,115,140,160,174,184,190,192,193,190,186,181,179,184,198,216,230,238,241,240,237,237,240,245,249,252,13,2,6,10,15,21,31,49,71,89,96,94,87,83,82,87,96,109,121,131,139,146,150,154,160,170,185,202,218,230,236,237,234,231,231,234,240,245,249,251,14,2,5,10,14,19,25,34,50,72,93,108,115,116,113,111,111,114,118,125,133,142,153,166,181,196,211,222,228,230,228,225,222,223,228,234,239,244,248,251,14,1,5,9,14,19,23,29,37,49,67,87,108,124,135,143,147,151,156,162,170,178,188,198,207,214,217,219,217,214,212,212,215,221,228,233,239,243,248,251,14,1,4,8,12,18,23,28,34,41,49,61,77,95,114,130,143,155,165,173,180,187,192,196,198,198,198,197,196,197,202,208,214,222,227,233,238,243,247,250,11,0,3,8,12,17,22,27,34,40,46,53,61,70,82,95,108,121,133,142,150,156,161,165,168,171,174,179,186,193,200,207,214,221,227,232,237,242,246,251,27,14,17,21,25,29,32,37,42,48,54,60,67,73,80,85,94,101,110,117,125,133,140,147,155,161,168,176,184,192,199,206,213,219,224,230,235,241,246,250,
+];
+
+var PAGE_STATIC = 128;
+var PAGE_FADE = 512;
+var PAGE_STEPS = PAGE_STATIC + PAGE_FADE;
+
+var page_pos = 0;
+var page_now = 0;
+var page_num = 0;
+var page_move_to = -1;
+
+var col_gray = new RGB(128, 128, 128);
+var col_orange = new RGB(255, 192, 32);
+var col_orange2 = new RGB(255, 128, 32);
+var col_white = new RGB(255, 255, 255);
+var col_black = new RGB(0, 0, 0);
+
+var page_data = [
+	{ title:"Demobit 2019", desc:'International Demoparty in Bratislava', src:"page_demobit2019.jpg", fad:3, link2 : { url:"http://demobit.party", name:"DEMOBIT WEB" },
+		link : { url:"https://tootoot.fm/en/events/5bf0a1cf57a04b03f027c986", name:"BUY TICKET" }},
+	{ title:"Demobit 2018", desc:'International Demoparty in Bratislava', src:"page_demobit2018.jpg", fad:0, link2 : { url:"http://demobit.party", name:"DEMOBIT WEB" },
+		link : { url:"https://tootoot.fm/en/events/59fc78b886076203e8827d84", name:"BUY TICKET" }},
+	{ title:"Esocentrica", desc:'ASD + Satori, Demobit 2017, 1st Demo, PC Windows', src:"page_esocentrica.jpg", fad:2, link : { url:"http://zd3n.com/files/asd+str_esocentrica.zip", name:"DOWNLOAD" }, video: { aspect: "16x9", embed: "YT", link: "fFs4d7npoyM", name: "Esocentrica by Andromeda Software Development + Satori", date:"" }},
+	{ title:"Demobit 2017", desc:'International Demoparty in Bratislava', src:"page_demobit.jpg", fad:0, link2 : { url:"http://demobit.party", name:"DEMOBIT WEB" }, link : { url:"https://www.youtube.com/channel/UCoy8SV2TphP-XcN-2Tu981Q", name:"WATCH RECORDINGS" }},
+	{ title:"400 Pins", desc:'Hard-coded music video for "Tu v dome" band', src:"page_400pins.jpg", fad:3, link : { url:"http://400pins.satori.sk", name:"MICROSITE" }, video: { aspect:"16x9", embed:"YT", link: "YhD7VknVJ0Y", name: "400 Pins", date:"" }},
+	{ title:"B10 HD", desc:"Full HD & AA reissue of the minimal demo from 2001", src:"page_b10hd.jpg", fad:2, link : { url:"http://b10.satori.sk", name:"MICROSITE" }, video: { aspect:"16x9", embed:"YT", link: "B4A2pI5nCFM", name: "B10 HD", date:"" }},
+	{ title:"Circulation", desc:"VJ, Image & Video Effects Tool", src:"page_circulation.jpg", fad:3, link: { url:"http://circulation.cc", name:"WEBSITE" }},
+	{ title:"GODTV", desc:"Real-time glitch softwareart", src:"page_godtv.jpg", fad:2, link:{ url:"http://godtv.satori.sk", name:"MICROSITE" }, video: { aspect: "16x9", embed: "YT", link: "PS64sr6lNO4", name: "GODTV", date:"" }, img:0, ok: 0 },
+	{ title:"Prints Collection 2015", desc:"Digital art created with in-house software Circulation", src:"page_pictures2015.jpg", fad:3, link: { url:"http://Zd3N.com/?static", name:"GALLERY" }, img:0, ok:0 },
+	{ title:"Srdce", desc:"Motion clip for Tu v Dome band", src:"page_srdce.jpg", fad:0, video: { aspect: "16x9", embed: "YT", link: "B5HJimwHRGA", name:"Srdce", date:"" }, img:0, ok:0 },
+	{ title:"secondrealm.is", desc:"Web-demo for Nethemba", src:"secondrealm.jpg", fad:1, link: { url:"http://secondrealm.is" }, video: { aspect: "16x9", embed: "YT", link:"SsD8Z_t0890", name:"Secondrealm.is", date:"" }, img:0, ok:0 },
+	{ title:"face.haluska.sk", desc:"Photo filtering web-app", src:"page_face.jpg", fad:2, link: { url:"http://face.haluska.sk" }, img:0, ok:0 },
+	{ title:"Saudade", desc:"Conceptual animation with Halcyon coop", src:"page_saudade.jpg", fad:3, video:{ aspect: "16x9", embed: "YT", link: "Cmby65lzr8c", name: "Saudade", date: "" }, img:0, ok:0 },
+	{ title:"Metamorf II", desc:"Sequel of most famous Satori demo", src:"page_metamorf2.jpg", fad:0, video: {aspect: "16x9", embed: "YT", link: "fsSvbsKEhDs", name: "Metamorf II", date: "" }, img:0, ok:0 },
+];
+
+var satori_logo_small = 0;
+
+function page_loaded_first()
+{
+	page_data[0].ok = 1;
+}
+
+function page_loaded_second()
+{
+	page_data[1].ok = 1;
+}
+
+function load_page()
+{
+	var a, c = page_data.length;
+	
+	page_num = c;
+	page_data[0].img = load_pic(page_data[0].src, page_loaded_first);
+	page_data[1].img = load_pic(page_data[1].src, page_loaded_second);
+	satori_logo_small = load_pic("satori_logo_small.png");
+	scroll_max = (page_num - 1) * PAGE_STEPS;
+}
+
+var fader_intro_tab = new Array(768);
+
+for (a = 0; a < 256; a++)
+{
+	fader_intro_tab[a] = 255;
+	fader_intro_tab[a+256] = 255 - a;
+	fader_intro_tab[a+512] = 0;
+}
+
+load_page();
+
+var page_next_load;
+
+function next_pic_loaded()
+{
+	page_data[page_next_load].ok = 1;
+	canvas.style.cursor = "default";
+}
+
+var intro_image_step_prev = -1;
+function intro_image(step_new)
+{
+	var a, step, al = 0;
+	var pos = new Array(16);
+	var wid = new Array(16);
+	var sh = (win_wid)/16;
+
+	if (step_new == intro_image_step_prev) return;
+
+	for (step = intro_image_step_prev + 1; step <= step_new; step++)
+	{
+
+		for (a = 0; a < 16; a++)
+		{
+			pos[a] = sh/2 + a*sh + Math.sin(step/(100+step*10))*777;
+			wid[a] = sh/4 + Math.sin((time+(a*step))/100)*sh/3+Math.cos((time/2+(a*100+step))/500)*sh/3;
+			if (wid[a] < 0) wid[a] = 0;
+
+			pos[a] -= wid[a]/2;
+	//	pos[a] += sh/2 - wid[a];
+			if (pos[a] < 0) pos = 0;
+		}
+		if (step)
+			al =  0.1 - (step / (win_hei - 1)/5);
+		if (al < 0) al = 0;
+		//al /= 100;
+		for (a = 0; a < 16; a++)
+		{
+			line(context, pos[a], step, pos[a]+wid[a], step, col_black, al, 1);
+			line(context, sh/2 + win_wid - 1 - pos[a], win_hei - 1 - step, sh/2 + win_wid - 1 - pos[a] - wid[a], win_hei - 1 - step, col_black, al, 1);
+	//	context.drawImage(img, pos[a], step, wid[a], 1, pos[a], step, wid[a], 1);
+	//	context.drawImage(img, sh/2 + win_wid - 1 - pos[a], win_hei - 1 - step, wid[a], 1, sh/2 + win_wid - 1 - pos[a], win_hei - 1 - step, wid[a], 1);
+		}
+	
+	}
+	intro_image_step_prev = step_new;
+}
+
+		function fade_image(context, img, img2, pos_x, pos_y, fader, fpos)
+		{
+			v = Math.floor(fpos); //scroll_pos);
+			if (v < 0) v = 0;
+			v %= 512;
+			p = fader*40*30;
+/*
+			//	context.drawImage(img_2, pos_x, pos_y);
+			for (y = 0; y < 15; y++, p += 40)
+				for (x = 0; x < 20; x++, p += 2)
+				{
+					m_d = data_fader_map[p];
+					m = fader_intro_tab[m_d+v];
+					al = m / 255;
+					xx = (x * win_wid) / 20;
+					w = (((x+1) * win_wid) / 20) - xx;
+					yy = (y * win_hei) / 15;
+					h = (((y+1) * win_hei) / 15) - yy;
+					//context.globalAlpha = al;
+					xx = Math.floor(xx);
+					w = Math.floor(w)+1;
+					h = Math.floor(h)+2;
+					yy = Math.floor(yy);
+					pos_y = Math.floor(pos_y);
+//					if (m < 224)
+	//					context.globalAlpha = 1;
+		//			else
+			//			context.globalAlpha = 1 - (m - 224)/32;
+					if (m < 255)
+						context.drawImage(img, -pos_x+xx, -pos_y+yy+al*1000, w, h, xx, yy+al, w, h);
+//					else
+	//					if (img2)
+		//					context.drawImage(img2, -pos_x+xx, -pos_y+yy, w, h, xx, yy, w, h);
+						//rect(xx, yy+al, w, h, col_orange, 1);
+				}
+			return;*/
+			for (y = 0; y < 30; y++)
+				for (x = 0; x < 40; x++, p++)
+				{
+					m_d = data_fader_map[p];
+					m = fader_intro_tab[m_d+v];
+					al = m / 255;
+					xx = (x * win_wid) / 40;
+					w = (((x+1) * win_wid) / 40) - xx;
+					yy = (y * win_hei) / 30;
+					h = (((y+1) * win_hei) / 30) - yy;
+					//context.globalAlpha = al;
+					xx = Math.floor(xx);
+					w = Math.floor(w)+1;
+					h = Math.floor(h)+2;
+					yy = Math.floor(yy);
+					pos_y = Math.floor(pos_y);
+//					if (m < 224)
+	//					context.globalAlpha = 1;
+		//			else
+			//			context.globalAlpha = 1 - (m - 224)/32;
+					if (m < 255)
+					context.drawImage(img, -pos_x+xx, -pos_y+yy+al*1000/*- m_d*al*/, w, h, /*pos_x+*/xx, /*pos_y+*/yy+al/*- m_d*al*/, w, h);
+				}
+	//	}
+		
+/*
+			for (y = 0; y < 30; y++)
+				for (x = 0; x < 40; x++)
+				{
+					context.drawImage(img_1, 0, 0, 100, 100, xx , yy, 100, 100);//, win_wid, win_hei);
+				}*/
+			
+		//	context.drawImage(img_1, 0, 0, 100, 100, xx , yy, 100, 100);//, win_wid, win_hei);
+//			oscillator1.frequency.value = 100+Math.abs(pos_x);
+//			oscillator2.frequency.value = 100+Math.abs(pos_y);
+//			oscillator3.frequency.value = 100+scroll_pos;
+		}
+/*		
+		myAudioContext = new webkitAudioContext();
+	    oscillator1 = myAudioContext.createOscillator();
+	    oscillator2 = myAudioContext.createOscillator();
+	    oscillator3 = myAudioContext.createOscillator();
+	    gainNode = myAudioContext.createGainNode();
+	    
+    	gainNode.connect(myAudioContext.destination);	    
+	    gainNode.gain.value = 0.01;
+	
+	    oscillator1.type = 'triangle';
+	    oscillator1.connect(gainNode);
+	    oscillator1.frequency.value = 220;
+
+	    oscillator2.type = 'sine';
+	    oscillator2.connect(gainNode);
+	    oscillator2.frequency.value = 220;
+	    
+	    oscillator3.type = 'sawtooth';
+	    oscillator3.connect(gainNode);
+	    oscillator3.frequency.value = 220;
+
+	    oscillator1.start(0); // oscillator.noteOn(0);
+	    oscillator2.start(0); // oscillator.noteOn(0);
+	    oscillator3.start(0); // oscillator.noteOn(0);
+	*/
+
+		var links = new Array(0);
+	
+		function page_title_draw(page, dir, alfa, fade)
+		{
+			var p, al, v, b, c, t, tl;
+			
+			if (!dir)
+			{
+				p = - page_pos/2;
+				al = 1 - alfa;
+				v = win_hei - 32 - page_pos/2;
+			}
+			else
+			{
+				p = PAGE_STEPS/2 - page_pos/2;
+				al = alfa;
+				v = win_hei - 32 + PAGE_STEPS/2 - page_pos/2;
+			}
+			al *= fade;
+
+			b = measure_text(context, page_data[page].title, FONT_ARIAL_80);
+			c = measure_text(context, page_data[page].desc, FONT_ARIAL_30);
+			if (c > b) b = c;
+			t = 16+b;
+				
+			if (typeof page_data[page].link !== "undefined")
+			{
+				if (typeof page_data[page].link.name !== "undefined")
+					name = page_data[page].link.name;
+				else
+					name = "VISIT";
+				tl = measure_text(context, name, FONT_ARIAL_10);
+				t -= (tl+10);
+				draw_text_boxed(context, t, v-125, 5, name, FONT_ARIAL_10, col_orange, col_black, al);
+				if (al > 0.16)
+					links.push({x: t, y: v-125, w: tl + 10, h: 20, l:page_data[page].link.url});
+				t -= 16;
+			}
+
+			if (typeof page_data[page].link2 !== "undefined")
+			{
+				if (typeof page_data[page].link2.name !== "undefined")
+					name = page_data[page].link2.name;
+				else
+					name = "VISIT";
+				tl = measure_text(context, name, FONT_ARIAL_10);
+				t -= (tl+10);
+				draw_text_boxed(context, t, v-125, 5, name, FONT_ARIAL_10, col_orange, col_black, al);
+				if (al > 0.16)
+					links.push({x: t, y: v-125, w: tl + 10, h: 20, l:page_data[page].link2.url});
+				t -= 16;
+			}
+
+			if (typeof page_data[page].video !== "undefined")
+			{
+				tl = measure_text(context, "WATCH", FONT_ARIAL_10);
+				t -= (tl+10);
+				draw_text_boxed(context, t, v-125, 5, "WATCH", FONT_ARIAL_10, col_orange, col_black, al);
+				if (al > 0.16)
+					links.push({x: t, y: v-125, w: tl + 10, h: 20, v: page_data[page].video});
+			}
+				
+			line(context, 16, v-104, 16+b, v-104, col_orange, al, 2);
+			line(context, 18, v-102, 17+b, v-102, col_black, al, 1);
+			line(context, 17+b, v-102, 17+b, v-123, col_black, al, 1);
+
+
+
+			draw_text_shadow(context, 16, win_hei - 32 + p, page_data[page].title, FONT_ARIAL_80, col_white, col_black, al);
+			draw_text_shadow(context, 16, win_hei - 100 + p, page_data[page].desc, FONT_ARIAL_30, col_white, col_black, al);
+
+		}
+		
+function loading()
+{
+	var str = "Loading...";
+	var len = measure_text(context, str, FONT_ARIAL_80);
+	draw_text_shadow(context, (win_wid - len)/2, win_hei/2 - 16, str, FONT_ARIAL_80, col_white, col_black, 1);
+}
+
+// ---------------------------------------------------
+
+		var time_start = -1;
+		var time;
+		var intro = 1;
+		var intro_skip = 0;
+		var INTRO_DURATION = 15000;
+		var NOTIFICATION_DURATION = 5000;
+		
+		var notification_on = 0, notification_time = -1, notification_msg = "";
+
+		function web_animate(canvas, context)
+		{
+			var a, v, c, b, l, x, y, al;
+
+			if (time_start == -1)
+			{
+				context.setTransform(1, 0, 0, 1, 0, 0);
+				context.beginPath();
+				context.rect(0, 0,canvas.width, canvas.height);
+				context.fillStyle = "white";
+				context.globalAlpha = 1;
+				context.fill();
+				if (!page_data[0].ok || !page_data[1].ok || imgs_used < 3)
+				{
+					loading();
+					web_anim_do();
+					return;
+				}
+				time_start = (new Date()).getTime();
+				if (intro_skip) time_start -= INTRO_DURATION;
+			}
+			time = (new Date()).getTime() - time_start;
+			if (notification_on && notification_time == -1)
+			{
+				notification_time = time;
+			}
+			
+			//context.scale(16, 9/w);
+/*
+			context.setTransform(1, 0, 0, 1, 0, 0);
+			context.beginPath();
+			context.rect(0, 0,canvas.width, canvas.height);
+			context.fillStyle = "white";
+			context.globalAlpha = 1;
+			context.fill();
+*/
+			var str;
+
+			al = 1;
+			if (time < INTRO_DURATION)
+			{
+				intro_image(Math.floor( ((win_hei)*time)/INTRO_DURATION )); 
+				satori_paint();
+				put_ch = put_ch_full;
+
+				if (time > INTRO_DURATION - 7500)
+					if (page_data[0].ok) 
+						fade_image(context, page_data[0].img, 0, 0, 0, page_data[0].fad, Math.floor((PAGE_FADE*(time - (INTRO_DURATION - 7500)))/(7500 /*- (INTRO_DURATION - 14000)*/)));
+	
+				if (time < 2000)
+					al = time/2000;
+				else
+				if (time > INTRO_DURATION - 5000)
+					al = 1 - (time - (INTRO_DURATION - 5000))/5000;
+				
+				print_at(context, 10, win_hei - 95, font6x6, "Grab the image and move it around.\n\nTo scroll projects use mouse wheel\n\nor slide on the right side of your\n\ntouch device.\n", col_black, 2, 1*al, 0);
+				a = INTRO_DURATION - time;
+				str = "";
+				var b = Math.floor(a/1000);
+				if (b < 10) str += "0";
+				str += ""+b+":";
+				b = Math.floor((a % 1000) / 16.6666);
+				if (b < 10) str += "0";
+				str += ""+b;
+				//str = ""+(!mm ? : "0" : "")+mm+":"+);
+				rect(win_wid-140, win_hei-45, 120, 20, col_white, 0.5*al);
+				print_at(context, win_wid - 140, win_hei - 45, font6x6, str, col_white, 4, 0.7*al, 0);
+				//put_ch = put_ch_dot;
+				print_at(context, win_wid - 140, win_hei - 45, font6x6, str, col_black, 4, 0.7*al, 0);
+
+				web_anim_do();
+				return;
+			}
+			if (intro)
+			{
+				intro = 0;
+				createCookie('intro', "1",1);
+			}
+			if (time < INTRO_DURATION + 2000)
+				al = (time - INTRO_DURATION) / 2000;
+/*
+			if (imgs_used < 3)
+			{
+				loading();
+				web_anim_do();
+				return;
+			}
+*/
+			var delta = (mouse.wheel_delta * -1);
+			if (page_move_to != -1)
+			{
+				if (Math.abs(scroll_pos - page_move_to*PAGE_STEPS) > 10)
+					delta = scroll_pos < page_move_to*PAGE_STEPS ? 10 : -10;
+				else
+				{
+					delta = -1 * (scroll_pos - page_move_to*PAGE_STEPS);
+					page_move_to = -1;
+				}
+			}
+
+			if (mouse.click)
+			{
+				c = links.length;
+				for (a = 0; a < c; a++)
+				{
+					l = links[a];
+					if (!mouse.touch)
+					{
+						x = mouse.x;
+						y = mouse.y;
+					}
+					else
+					{
+						x = mouse.touch_click_x;
+						y = mouse.touch_click_y;
+					}
+					if (x >= l.x && y >= l.y && x < l.x + l.w && y < l.y + l.h)
+					{
+						if (typeof l.v !== "undefined")
+						{
+							overlay_video(l.v);
+						}
+						else
+						if (typeof l.l == 'number')
+						{
+							if (l.l == 777)
+								overlay_contact();
+							else
+							if (l.l == 7777)
+							{
+								document.location.href = "http://tv.satori.sk";
+							}
+							else
+								page_move_to = l.l;
+						}
+						else
+							location.href = l.l;
+							
+						canvas.style.cursor = "default";
+						mouse.click_release = 0;
+						mouse.click = mouse.down = 0;
+						mouse.touch = mouse.touch_wheel = 0;
+						break;
+					}
+				}
+			}
+
+			scroll_pos += delta;
+			if (scroll_pos < 0) scroll_pos = 0;
+			if (scroll_pos > scroll_max) scroll_pos = scroll_max;
+			var sp = scroll_pos + mouse.touch_delta;
+			if (sp < 0) sp = 0;
+			if (sp > scroll_max) sp = scroll_max;
+			page_pos = sp % PAGE_STEPS;
+			page_now = Math.floor(sp / PAGE_STEPS);
+			page_now %= page_num;
+			var page_next = (page_now + 1) % page_num;
+			
+			if (!page_data[page_now].ok || !page_data[page_next].ok)
+			{
+//				canvas.style.cursor = "wait";
+				loading();
+				web_anim_do();
+				return;
+			}
+			/*
+			a = page_now - 2;
+			if (a >= 0 && page_data[a].ok)
+			{
+				page_data[a].img = 0;
+				page_data[a].ok = 0;
+			}
+			*/
+			var img = page_data[page_now].img;
+			
+			if (mouse.click)
+			{
+				mouse.click = 0;
+				
+				pic_pos.shift_x = mouse.x;
+				pic_pos.shift_y = mouse.y;
+			}
+
+			if (mouse.click_release)
+			{
+				canvas.style.cursor = "default";
+				mouse.click_release = 0;
+				pic_pos.x += pic_pos.drag_x;//(mouse.x - pic_pos.shift_x);
+				pic_pos.y += pic_pos.drag_y;//(mouse.y - pic_pos.shift_y);
+				if (pic_pos.y > 0)
+				{
+					pic_pos.y = 0;
+					pic_pos.dir_y = 0;
+				}
+				else
+				if (pic_pos.y < -img.height + win_hei)
+				{
+					pic_pos.y = -img.height + win_hei;
+					pic_pos.dir_y = 0;
+				}
+				
+				if (pic_pos.x > 0)
+				{
+					pic_pos.x = 0;
+					pic_pos.dir_x = 0;
+				}
+				else
+				if (pic_pos.x < -img.width + win_wid)
+				{
+					pic_pos.x = -img.width + win_wid;
+					pic_pos.dir_x = 0;
+				}
+				
+				pic_pos.dir_x *= 2;
+				pic_pos.dir_y *= 2;
+			}
+
+			if (mouse.down)
+			{
+				canvas.style.cursor = "move";
+				pic_pos.drag_x = mouse.x - pic_pos.shift_x;
+				pic_pos.drag_y = mouse.y - pic_pos.shift_y;
+				if (time - mouse.last_move_time > 150)
+				{
+					pic_pos.dir_x = pic_pos.dir_y = 0;
+				}
+				else
+				{
+					pic_pos.dir_x = pic_pos.drag_x;
+					pic_pos.dir_x /= 2;
+					pic_pos.dir_y = pic_pos.drag_y;
+					pic_pos.dir_y /= 2;
+				}
+			}
+			else
+			{
+				pic_pos.drag_x = 0;
+				pic_pos.drag_y = 0;
+
+				if (pic_pos.x < 0 && pic_pos.x > -img.width + win_wid)
+				{
+					pic_pos.x += pic_pos.dir_x/10;
+					pic_pos.dir_x *= 0.9;
+				}
+				else
+					pic_pos.dir_x *= 0;
+					
+				if (pic_pos.y < 0 && pic_pos.y > -img.height + win_hei)
+				{
+					pic_pos.y += pic_pos.dir_y/10;
+					pic_pos.dir_y *= 0.9;
+				}
+				else
+					pic_pos.dir_y *= 0;
+
+			}
+			
+			links.length = 0;
+
+//			if (imgs_loaded == 2)
+//			{			
+				var xx_ = pic_pos.x + pic_pos.drag_x;
+				var yy_ = pic_pos.y/*+pic_y*/+pic_pos.drag_y;
+				if (xx_ > 0) xx_ = 0
+				if (xx_ < -img.width + win_wid) xx_ = -img.width + win_wid;
+				if (yy_ > 0) yy_ = 0;
+				if (yy_ < -img.height + win_hei) yy_ = -img.height + win_hei;
+
+
+			page_next_load = (page_now + 2) % page_num;
+			if (page_pos > PAGE_STATIC && !page_data[page_next_load].ok)
+			{
+				page_data[page_next_load].img = load_pic(page_data[page_next_load].src, next_pic_loaded);
+			}
+			
+			if (page_pos >= PAGE_STATIC)
+			{
+				context.globalAlpha = 1;
+				context.drawImage(page_data[page_next].img, xx_, yy_);
+			}
+			
+//			if (1 == 2)
+			{
+	
+				context.globalAlpha = 1;
+
+				if (page_pos <= PAGE_STATIC)
+					context.drawImage(img, xx_, yy_);//, win_wid, win_hei);
+				else
+					fade_image(context, img, page_data[page_next].img, xx_, yy_, page_data[page_now].fad, PAGE_FADE - (page_pos - PAGE_STATIC));
+				//context.drawImage(img_1, xx_, yy_);//, win_wid, win_hei);
+			}
+			
+			mouse.wheel_delta *= 0.9;
+
+// pages with names
+
+			for (a = 0; a < page_num; a++)
+			{
+				v = 16 + a * 64;
+				if (page_data[a].ok)
+				{
+					context.globalAlpha = 0.5*al;
+					context.drawImage(page_data[a].img, win_wid - 64, v, 48, 32);
+				}
+				else
+					rect_canvas(win_wid - 64, v, 48, 32, col_gray, 0.5*al);
+				links.push({x: win_wid - 64, y: v, w: 48, h: 32, l:a});
+				//print_at(context, win_wid - 16 - page_data[a].title.length * 6 + 1, v + 36, font6x6, page_data[a].title, col_black, 1, 0.5, 0);
+				if (page_now == a)
+				{
+					if (page_pos < PAGE_STATIC)
+						c = col_white;
+					else
+					{
+						b = Math.floor( ((page_pos - PAGE_STATIC) * 255) / PAGE_FADE );
+						b = 255 - b;
+						c = new RGB(b, b, b);
+					}
+				}
+				else
+				if (page_next == a)
+				{
+					if (page_pos < PAGE_STATIC)
+						c = col_black;
+					else
+					{
+						b = Math.floor( ((page_pos - PAGE_STATIC) * 255) / PAGE_FADE );
+						c = new RGB(b, b, b);
+					}
+				}
+				else
+					c = col_black;
+				print_at(context, win_wid - 16 - page_data[a].title.length * 6, v + 36, font6x6, page_data[a].title, c, 1, 0.75*al, 0);
+			}
+// act pos			
+			rect_canvas(win_wid - 64, 16 + page_now * 64 + (page_pos * 64)/PAGE_STEPS, 48, 32, col_orange, 0.5*al);
+// in-pic			
+			rect_canvas(win_wid - 16 - (img.width >> 4), win_hei - 16 - (img.height >> 4), img.width >> 4, img.height >> 4, col_gray, 0.25*al);
+			rect_canvas(win_wid - 16 - (img.width >> 4) - (xx_ >> 4), win_hei - 16 - (img.height >> 4) - (yy_ >> 4), win_wid >> 4, win_hei >> 4, col_orange, 0.5*al);
+
+			var b = page_pos/PAGE_STEPS;
+			page_title_draw(page_now, 0, b, al);
+			
+			page_title_draw(page_next, 1, b, al);
+		
+			context.globalAlpha = 1*al;
+			context.drawImage(satori_logo_small, win_wid - 256, 16-3);//, win_wid, win_hei);
+			
+			b = measure_text(context, "CONTACT", FONT_ARIAL_20);
+			draw_text_shadow(context, win_wid - 256 - b - 32, 38, "CONTACT", FONT_ARIAL_20, col_black, col_white, al*0.5);
+			links.push({x: win_wid - 256 - b - 32, y: 38-16, w: b, h: 20, l:777});
+
+			b = measure_text(context, "STR TV", FONT_ARIAL_20);
+			draw_text_shadow(context, win_wid - 256 - b - 32, 38+32, "STR TV", FONT_ARIAL_20, col_black, col_white, al*0.5);
+			links.push({x: win_wid - 256 - b - 32, y: 38+32-16, w: b, h: 20, l:7777});
+
+			b = win_wid - 256 - 16;
+			h = 48+26;
+			line(context, b, 18, b, h, col_black, 0.5*al);
+			line(context, b+1, 18+1, b+1, h+1, col_white, 0.5*al);
+			
+			canvas.style.cursor = "arrow";
+//				satori_paint();
+
+			if (notification_on)
+			{
+				if (time - notification_time < NOTIFICATION_DURATION)
+				{
+					draw_notification(time - notification_time);
+				}
+				else
+				{
+					notification_on = 0;
+					notification_msg = "";
+					notification_time = -1;
+				}
+			}
+
+			web_anim_do();
+		}
+
+// ----------------------------------------------------------------------------------------------------
+
+		if (window.addEventListener)
+			window.addEventListener('DOMMouseScroll', mouse_wheel, false);
+		window.onmousewheel = document.onmousewheel = mouse_wheel;
+		window.onmousemove = document.onmousemove = mouse_move;
+		window.onmousedown = document.onmousedown = mouse_down;
+		window.onmouseup = document.onmouseup = mouse_up;
+		window.onmouseout = document.onmouseout = mouse_up;
+		window.ontouchstart = document.ontouchstart = touch_down;
+		window.ontouchend = document.ontouchend = touch_up;
+		window.ontouchmove = document.ontouchmove = touch_move;
+		window.ontouchleave = document.ontouchleave = touch_up;
+		
+      window.requestAnimFrame = (function(callback) {
+        return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+        };
+      })();
+	  
+	var web_anim_do = function() { requestAnimFrame(function() { web_animate(canvas, context); }) };
+	if (readCookie('intro') == "1")
+	{
+		intro_skip = 1;
+	}
+	web_animate(canvas, context);
+/*
+	function window_orientation()
+	{
+		window_reallign();
+	}
+	
+	addEvent(window, "orientationchange", window_orientation);
+*/
+	/*
+window.document.addEventListener('orientationchange', function() {
+  var iOS = navigator.userAgent.match(/(iPad|iPhone|iPod)/g);
+  var viewportmeta = document.querySelector('meta[name="viewport"]');
+  if (iOS && viewportmeta) {
+    if (viewportmeta.content.match(/width=device-width/)) {
+      viewportmeta.content = viewportmeta.content.replace(/width=[^,]+/, 'width=1');
+    }
+    viewportmeta.content = viewportmeta.content.replace(/width=[^,]+/, 'width=' + window.innerWidth);
+	alert('orientation');
+  }
+  // If you want to hide the address bar on orientation change, uncomment the next line
+  // window.scrollTo(0, 0);
+}, false);
+*/
+
+ovr=document.getElementById('displaybox');
+blk=document.getElementById('blankbox');
+				</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40773143-1', 'satori.sk');
+  ga('send', 'pageview');
+</script>
+				
+  
+
+</body></html>
